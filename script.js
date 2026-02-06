@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add floating hearts to the floating hearts container when button is clicked
     function addFloatingHearts() {
         const floatingHeartsContainer = document.querySelector('.floating-hearts');
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 15; i++) {
             const heart = document.createElement('div');
             heart.className = 'floating-heart';
             
@@ -18,13 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
             heart.style.left = `${left}%`;
             
             // Random size
-            const size = 8 + Math.random() * 10;
+            const size = 10 + Math.random() * 12;
             heart.style.width = `${size}px`;
             heart.style.height = `${size}px`;
             
             // Random animation delay and duration
             const delay = Math.random() * 2;
-            const duration = 3 + Math.random() * 3;
+            const duration = 3 + Math.random() * 4;
             
             heart.style.animationDelay = `${delay}s`;
             heart.style.animationDuration = `${duration}s`;
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             before.style.position = 'absolute';
             before.style.width = `${size}px`;
             before.style.height = `${size}px`;
-            before.style.backgroundColor = `rgba(233, 30, 99, ${0.5 + Math.random() * 0.5})`;
+            before.style.backgroundColor = `rgba(233, 30, 99, ${0.5 + Math.random() * 0.4})`;
             before.style.borderRadius = '50%';
             before.style.top = `-${size/2}px`;
             before.style.left = '0';
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
             after.style.position = 'absolute';
             after.style.width = `${size}px`;
             after.style.height = `${size}px`;
-            after.style.backgroundColor = `rgba(233, 30, 99, ${0.5 + Math.random() * 0.5})`;
+            after.style.backgroundColor = `rgba(233, 30, 99, ${0.5 + Math.random() * 0.4})`;
             after.style.borderRadius = '50%';
             after.style.top = '0';
             after.style.left = `${size/2}px`;
@@ -86,18 +86,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add hover effect to the button
     openBtn.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-3px)';
-        this.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.25)';
+        this.style.transform = 'translateY(-3px) scale(1.05)';
+        this.style.boxShadow = '0 10px 25px rgba(233, 30, 99, 0.5)';
     });
     
     openBtn.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-        this.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
+        this.style.transform = 'translateY(0) scale(1)';
+        this.style.boxShadow = '0 6px 15px rgba(233, 30, 99, 0.4)';
     });
     
     // Create additional floating hearts periodically
     setInterval(() => {
-        if (document.querySelectorAll('.hearts-container .heart').length < 30) {
+        if (document.querySelectorAll('.hearts-container .heart').length < 50) {
             const heartsContainer = document.querySelector('.hearts-container');
             const heart = document.createElement('div');
             heart.className = 'heart';
@@ -110,13 +110,13 @@ document.addEventListener('DOMContentLoaded', function() {
             heart.style.left = `${left}%`;
             
             // Random size
-            const size = 10 + Math.random() * 15;
+            const size = 12 + Math.random() * 18;
             heart.style.width = `${size}px`;
             heart.style.height = `${size}px`;
             
             // Random animation delay and duration
             const delay = Math.random() * 5;
-            const duration = 5 + Math.random() * 7;
+            const duration = 6 + Math.random() * 8;
             
             heart.style.animationDelay = `${delay}s`;
             heart.style.animationDuration = `${duration}s`;
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
             before.style.position = 'absolute';
             before.style.width = `${size}px`;
             before.style.height = `${size}px`;
-            before.style.backgroundColor = `rgba(255, 0, 85, ${0.5 + Math.random() * 0.5})`;
+            before.style.backgroundColor = `rgba(255, 0, 85, ${0.4 + Math.random() * 0.4})`;
             before.style.borderRadius = '50%';
             before.style.top = `-${size/2}px`;
             before.style.left = '0';
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
             after.style.position = 'absolute';
             after.style.width = `${size}px`;
             after.style.height = `${size}px`;
-            after.style.backgroundColor = `rgba(255, 0, 85, ${0.5 + Math.random() * 0.5})`;
+            after.style.backgroundColor = `rgba(255, 0, 85, ${0.4 + Math.random() * 0.4})`;
             after.style.borderRadius = '50%';
             after.style.top = '0';
             after.style.left = `${size/2}px`;
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }, duration * 1000);
         }
-    }, 2000);
+    }, 1500);
     
     // Add click effect to the entire page
     document.body.addEventListener('click', function(e) {
@@ -167,8 +167,8 @@ document.addEventListener('DOMContentLoaded', function() {
         effect.style.position = 'fixed';
         effect.style.left = `${x}px`;
         effect.style.top = `${y}px`;
-        effect.style.width = '20px';
-        effect.style.height = '20px';
+        effect.style.width = '25px';
+        effect.style.height = '25px';
         effect.style.border = '2px solid rgba(233, 30, 99, 0.7)';
         effect.style.borderRadius = '50%';
         effect.style.transform = 'scale(0)';
@@ -180,10 +180,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Animate the effect
         const animation = effect.animate([
             { transform: 'scale(0)', opacity: 1 },
-            { transform: 'scale(1)', opacity: 0.7 },
-            { transform: 'scale(2)', opacity: 0 }
+            { transform: 'scale(1.2)', opacity: 0.7 },
+            { transform: 'scale(2.5)', opacity: 0 }
         ], {
-            duration: 800,
+            duration: 1000,
             easing: 'ease-out'
         });
         
@@ -193,4 +193,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
     }
+    
+    // Add touch feedback for mobile devices
+    document.body.addEventListener('touchstart', function(e) {
+        if (!e.target.closest('#open-btn')) {
+            createClickEffect(e.touches[0].clientX, e.touches[0].clientY);
+        }
+    });
 });
