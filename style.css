@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Georgia', serif;
-    background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0, #ffafbd);
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
@@ -15,6 +15,7 @@ body {
     justify-content: center;
     align-items: center;
     color: #5a3e36;
+    padding: 20px;
 }
 
 /* Floating hearts background */
@@ -30,8 +31,8 @@ body {
 
 .heart {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     background-color: rgba(255, 0, 85, 0.7);
     transform: rotate(-45deg);
     animation: float 6s ease-in-out infinite;
@@ -40,21 +41,21 @@ body {
 .heart:before,
 .heart:after {
     content: '';
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     background-color: rgba(255, 0, 85, 0.7);
     border-radius: 50%;
     position: absolute;
 }
 
 .heart:before {
-    top: -10px;
+    top: -8px;
     left: 0;
 }
 
 .heart:after {
     top: 0;
-    left: 10px;
+    left: 8px;
 }
 
 .heart:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
@@ -89,8 +90,9 @@ body {
     position: relative;
     z-index: 10;
     max-width: 800px;
-    width: 90%;
+    width: 100%;
     perspective: 1000px;
+    padding: 20px;
 }
 
 /* Envelope styling */
@@ -107,14 +109,15 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, #e6bcad, #d4a592);
-    border-radius: 8px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #f8bbd0, #e91e63);
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(139, 0, 0, 0.3);
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     backface-visibility: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.3);
 }
 
 .envelope-flap {
@@ -125,56 +128,82 @@ body {
     height: 0;
     border-left: 150px solid transparent;
     border-right: 150px solid transparent;
-    border-bottom: 50px solid #c99a88;
+    border-bottom: 50px solid #d81b60;
     transform-origin: bottom;
     transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     z-index: 2;
+    filter: drop-shadow(0 -5px 5px rgba(0,0,0,0.2));
 }
 
 .envelope-body {
-    padding: 20px;
+    padding: 25px;
     text-align: center;
     z-index: 1;
 }
 
 .to {
-    font-size: 1.2em;
-    margin-bottom: 10px;
+    font-size: 1.3em;
+    margin-bottom: 12px;
     color: #fff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
 }
 
 .from {
-    font-size: 0.9em;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 15px;
+    font-style: italic;
 }
 
 .open-btn {
-    background: linear-gradient(to right, #ff6b6b, #ff8e8e);
+    background: linear-gradient(135deg, #ff4081, #e91e63);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 12px 25px;
+    border-radius: 30px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.1em;
     font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.open-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e91e63, #ff4081);
+    z-index: -1;
+    transition: opacity 0.4s ease;
+    opacity: 0;
+}
+
+.open-btn:hover::before {
+    opacity: 1;
 }
 
 .open-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(to right, #ff5252, #ff7b7b);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(233, 30, 99, 0.5);
+}
+
+.open-btn:active {
+    transform: translateY(1px) scale(0.98);
 }
 
 /* Letter paper styling */
 .letter-paper {
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(to bottom, #fff9f9, #ffffff);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
     margin-top: -100px;
     opacity: 0;
     transform: translateY(50px) rotateX(90deg);
@@ -182,6 +211,8 @@ body {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    border: 1px solid rgba(233, 30, 99, 0.1);
 }
 
 .letter-paper.show {
@@ -191,26 +222,44 @@ body {
 
 .letter-content h1 {
     color: #e91e63;
-    margin-bottom: 20px;
-    font-size: 1.8em;
+    margin-bottom: 25px;
+    font-size: 2em;
     text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.letter-content h1::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #e91e63, transparent);
+    margin: 10px auto;
+    border-radius: 2px;
 }
 
 .letter-content p {
-    margin-bottom: 15px;
-    line-height: 1.6;
-    font-size: 1.1em;
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-size: 1.15em;
     text-align: justify;
+    color: #5a3e36;
+    position: relative;
 }
 
 .signature {
-    margin-top: 30px;
+    margin-top: 40px;
     text-align: right;
     font-style: italic;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(233, 30, 99, 0.3);
 }
 
 .signature p:first-child {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #e91e63;
 }
 
 /* Floating hearts on letter */
@@ -226,8 +275,8 @@ body {
 
 .floating-heart {
     position: absolute;
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
     background-color: rgba(233, 30, 99, 0.7);
     transform: rotate(-45deg);
     animation: floatHeart 4s ease-in-out infinite;
@@ -237,21 +286,21 @@ body {
 .floating-heart:before,
 .floating-heart:after {
     content: '';
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
     background-color: rgba(233, 30, 99, 0.7);
     border-radius: 50%;
     position: absolute;
 }
 
 .floating-heart:before {
-    top: -7.5px;
+    top: -7px;
     left: 0;
 }
 
 .floating-heart:after {
     top: 0;
-    left: 7.5px;
+    left: 7px;
 }
 
 .floating-heart:nth-child(1) { top: 20%; left: 10%; animation-delay: 0.5s; }
@@ -276,7 +325,7 @@ body {
 
 /* Animation for envelope opening */
 .envelope-open .envelope-flap {
-    transform: rotateX(180deg);
+    transform: rotateX(180deg) translateY(-10px);
 }
 
 .envelope-open .letter-paper {
@@ -284,16 +333,74 @@ body {
 }
 
 /* Responsive design */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .letter-envelope {
-        width: 250px;
-        height: 170px;
+        width: 280px;
+        height: 190px;
     }
     
     .envelope-flap {
-        border-left: 125px solid transparent;
-        border-right: 125px solid transparent;
-        border-bottom: 40px solid #c99a88;
+        border-left: 140px solid transparent;
+        border-right: 140px solid transparent;
+        border-bottom: 45px solid #d81b60;
+    }
+    
+    .envelope-body {
+        padding: 20px;
+    }
+    
+    .to {
+        font-size: 1.2em;
+    }
+    
+    .from {
+        font-size: 0.9em;
+    }
+    
+    .open-btn {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    
+    .letter-content h1 {
+        font-size: 1.7em;
+    }
+    
+    .letter-content p {
+        font-size: 1.05em;
+    }
+    
+    .letter-paper {
+        padding: 25px;
+    }
+    
+    .signature {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    
+    .letter-envelope {
+        width: 260px;
+        height: 180px;
+    }
+    
+    .envelope-flap {
+        border-left: 130px solid transparent;
+        border-right: 130px solid transparent;
+        border-bottom: 43px solid #d81b60;
+    }
+    
+    .to {
+        font-size: 1.1em;
+    }
+    
+    .from {
+        font-size: 0.85em;
     }
     
     .letter-content h1 {
@@ -302,9 +409,39 @@ body {
     
     .letter-content p {
         font-size: 1em;
+        line-height: 1.6;
     }
     
     .letter-paper {
         padding: 20px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 360px) {
+    .letter-envelope {
+        width: 240px;
+        height: 170px;
+    }
+    
+    .envelope-flap {
+        border-left: 120px solid transparent;
+        border-right: 120px solid transparent;
+        border-bottom: 40px solid #d81b60;
+    }
+    
+    .to {
+        font-size: 1em;
+    }
+    
+    .letter-content h1 {
+        font-size: 1.4em;
+    }
+    
+    .letter-content p {
+        font-size: 0.95em;
     }
 }
